@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Hotel Aurora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Hotel Aurora</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">Izby</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h2 class="text-center mb-4">Kontaktujte nás</h2>
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="map-box">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Štrbské+Pleso,+Slovensko&hl=sk&z=14&output=embed"
+                        width="100%" height="400"
+                        style="border:0;" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Hotel Aurora</h3>
+                <p><strong>Adresa:</strong> Štrbské Pleso 59, Vysoké Tatry</p>
+                <p><strong>Telefón:</strong> +421 900 000 000</p>
+                <p><strong>Email:</strong> info@hotelaurora.sk</p>
+                <hr>
+                <h5>Napíšte nám</h5>
+
+                <form>
+                    <div class="mb-3">
+                        <label for="meno" class="form-label">Meno</label>
+                        <input type="text" id="meno" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sprava" class="form-label">Správa</label>
+                        <textarea id="sprava" class="form-control" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Odoslať</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3">
+        © 2025 Hotel Aurora | <a href="contact.html" class="footer-link">Kontaktujte nás</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
