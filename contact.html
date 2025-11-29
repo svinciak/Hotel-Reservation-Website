@@ -9,17 +9,18 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="header">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Hotel Aurora</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="logo" href="index.html">Hotel Aurora</a>
+            <button class="toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
-                    <li class="nav-item"><a class="nav-link" href="rooms.html">Izby</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contact.html">Kontakt</a></li>
+            <div class="nav-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="index.html">Domov</a></li>
+                    <li><a class="nav-link" href="rooms.html">Izby</a></li>
+                    <li><a class="nav-link" href="welness.html">Wellness</a></li>
+                    <li><a class="nav-link active" href="contact.html">Kontakt</a></li>
                 </ul>
             </div>
         </div>
@@ -28,13 +29,11 @@
     <main class="container my-5">
         <h2 class="text-center mb-4">Kontaktujte nás</h2>
         <div class="row g-4">
-
             <div class="col-md-6">
-                <div class="map-box">
+                <div class="map-container">
                     <iframe 
                         src="https://www.google.com/maps?q=Štrbské+Pleso,+Slovensko&hl=sk&z=14&output=embed"
-                        width="100%" height="400"
-                        style="border:0;" allowfullscreen loading="lazy">
+                        allowfullscreen loading="lazy">
                     </iframe>
                 </div>
             </div>
@@ -47,18 +46,18 @@
                 <hr>
                 <h5>Napíšte nám</h5>
 
-                <form>
-                    <div class="mb-3">
-                        <label for="meno" class="form-label">Meno</label>
-                        <input type="text" id="meno" class="form-control" required>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Meno</label>
+                        <input type="text" id="contactName" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" id="email" class="form-control" required>
+                    <div class="form-group">
+                        <label for="contactEmail">E-mail</label>
+                        <input type="email" id="contactEmail" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="sprava" class="form-label">Správa</label>
-                        <textarea id="sprava" class="form-control" rows="4"></textarea>
+                    <div class="form-group">
+                        <label for="contactMessage">Správa</label>
+                        <textarea id="contactMessage" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Odoslať</button>
                 </form>

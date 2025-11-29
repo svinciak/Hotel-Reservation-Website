@@ -9,51 +9,46 @@
 </head>
 <body>
 
-    <!-- Navigácia -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="header">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Hotel Aurora</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="logo" href="index.html">Hotel Aurora</a>
+            <button class="toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Domov</a></li>
-                    <li class="nav-item"><a class="nav-link" href="rooms.html">Izby</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
+            <div class="nav-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a class="nav-link active" href="index.html">Domov</a></li>
+                    <li><a class="nav-link" href="rooms.html">Izby</a></li>
+                    <li><a class="nav-link" href="welness.html">Wellness</a></li>
+                    <li><a class="nav-link" href="contact.html">Kontakt</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Úvodná sekcia -->
-    <header class="hero-section d-flex align-items-center text-center">
-        <div class="container bg-light bg-opacity-75 p-4 rounded">
-            <h1 class="fw-bold text-dark">Vitajte v Hoteli Aurora</h1>
-            <p class="lead text-dark">Oddýchnite si v krásnom prostredí s výhľadom na Tatry.</p>
-            <a href="rooms.html" class="btn btn-primary btn-lg me-2">Naše izby</a>
-            <a href="contact.html" class="btn btn-outline-dark btn-lg">Kontakt</a>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Vitajte v Hoteli Aurora</h1>
+            <p>Oddýchnite si v krásnom prostredí s výhľadom na Tatry.</p>
+            <a href="rooms.html" class="btn btn-primary">Naše izby</a>
+            <a href="welness.html" class="btn btn-primary">Wellness</a>
+            <a href="contact.html" class="btn btn-outline-dark">Kontakt</a>
         </div>
     </header>
 
-    <!-- Sekcia výhod -->
-    <section class="container my-5 text-center">
-        <h2 class="mb-4">Čo ponúkame</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="feature-box p-4">
+    <section class="features">
+        <div class="container text-center">
+            <h2>Čo ponúkame</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
                     <h4>Komfortné izby</h4>
                     <p>Moderné izby s bezplatným Wi-Fi, klimatizáciou a raňajkami v cene.</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="feature-box p-4">
+                <div class="feature-card">
                     <h4>Wellness & relax</h4>
                     <p>Uvoľnite sa v našom wellness centre s bazénom a saunou.</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="feature-box p-4">
+                <div class="feature-card">
                     <h4>Výborná poloha</h4>
                     <p>Nachádzame sa priamo pod horami – ideálne miesto na oddych aj turistiku.</p>
                 </div>
@@ -61,19 +56,18 @@
         </div>
     </section>
 
-    <!-- O hoteli -->
-    <section class="about container my-5">
-        <div class="about-flex">
-            <div class="about-text">
-                <h2>O našom hoteli</h2>
-                <p>Hotel Aurora je ideálnym miestom pre oddych aj firemné pobyty. Naše izby sú moderné a pohodlné, personál priateľský a prostredie pokojné.</p>
-                <a href="rooms.html" class="btn btn-primary">Pozrieť izby</a>
+    <section class="about">
+        <div class="container">
+            <div class="about-box">
+                <div class="about-text">
+                    <h2>O našom hoteli</h2>
+                    <p>Hotel Aurora je ideálnym miestom pre oddych aj firemné pobyty. Naše izby sú moderné a pohodlné, personál priateľský a prostredie pokojné.</p>
+                    <a href="rooms.html" class="btn btn-primary">Pozrieť izby</a>
+                </div>
+                <img src="https://source.unsplash.com/600x400/?hotel,interior" alt="Hotel Aurora">
             </div>
-            <img src="https://source.unsplash.com/600x400/?hotel,interior" alt="Hotel Aurora">
         </div>
     </section>
-
-    <!-- Pätička -->
     <footer class="bg-dark text-white text-center p-3">
         © 2025 Hotel Aurora | <a href="contact.html" class="footer-link">Kontaktujte nás</a>
     </footer>

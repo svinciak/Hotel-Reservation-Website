@@ -8,29 +8,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Navigácia -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="header">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Hotel Aurora</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="logo" href="index.html">Hotel Aurora</a>
+            <button class="toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Domov</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="rooms.html">Izby</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
+            <div class="nav-menu" id="navbarMenu">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="index.html">Domov</a></li>
+                    <li><a class="nav-link active" href="rooms.html">Izby</a></li>
+                    <li><a class="nav-link" href="welness.html">Wellness</a></li>
+                    <li><a class="nav-link" href="contact.html">Kontakt</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Izby -->
     <main class="container my-5">
         <h2 class="text-center mb-4">Naše izby</h2>
-        <div class="rooms-flex">
+        <div class="mb-4 text-center">
+            <input type="text" id="roomSearch" class="form-control w-50 m-auto" placeholder="Hľadať izbu...">
+        </div>
+        <div id="searchResults" class="mt-4 p-3 bg-white border rounded" style="display:none;"></div>
 
+        <div class="rooms-container">
             <div class="room-card">
                 <div class="room-image">
                     <img src="imgs/standard.jpg" alt="Štandardná izba">
@@ -39,7 +41,7 @@
                     <h3>Štandardná izba</h3>
                     <p>Pohodlná dvojlôžková izba so súkromnou kúpeľňou a Wi-Fi.</p>
                     <p class="price">Cena: od 89 € / noc</p>
-                    <button class="btn btn-primary" onclick="predvyplnIzbu('Štandardná izba')">Rezervovať</button>
+                    <button class="btn btn-primary" onclick="prefillRoom('Štandardná izba')">Rezervovať</button>
                 </div>
             </div>
 
@@ -51,7 +53,7 @@
                     <h3>Luxusný apartmán</h3>
                     <p>Priestranný apartmán s obývačkou, balkónom a krásnym výhľadom.</p>
                     <p class="price">Cena: od 149 € / noc</p>
-                    <button class="btn btn-primary" onclick="predvyplnIzbu('Luxusný apartmán')">Rezervovať</button>
+                    <button class="btn btn-primary" onclick="prefillRoom('Luxusný apartmán')">Rezervovať</button>
                 </div>
             </div>
 
@@ -63,7 +65,7 @@
                     <h3>Rodinná izba</h3>
                     <p>Ideálna pre rodiny s deťmi, s dvoma spálňami a súkromnou terasou.</p>
                     <p class="price">Cena: od 129 € / noc</p>
-                    <button class="btn btn-primary" onclick="predvyplnIzbu('Rodinná izba')">Rezervovať</button>
+                    <button class="btn btn-primary" onclick="prefillRoom('Rodinná izba')">Rezervovať</button>
                 </div>
             </div>
         </div>
@@ -71,27 +73,27 @@
         <!-- Bootstrap formulár na rezerváciu -->
         <div class="mt-5 p-4 bg-light rounded shadow-sm">
             <h3 class="mb-3">Rezervácia izby</h3>
-            <form>
+            <form class="reservation-form">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="meno" class="form-label">Meno a priezvisko</label>
-                        <input type="text" id="meno" class="form-control" required>
+                        <label for="reserveName" class="form-label">Meno a priezvisko</label>
+                        <input type="text" id="reserveName" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" id="email" class="form-control" required>
+                        <label for="reserveEmail" class="form-label">E-mail</label>
+                        <input type="email" id="reserveEmail" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="datum" class="form-label">Dátum príchodu</label>
-                        <input type="date" id="datum" class="form-control" required>
+                        <label for="reserveDate" class="form-label">Dátum príchodu</label>
+                        <input type="date" id="reserveDate" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="osoby" class="form-label">Počet osôb</label>
-                        <input type="number" id="osoby" class="form-control" min="1" value="2">
+                        <label for="reserveGuests" class="form-label">Počet osôb</label>
+                        <input type="number" id="reserveGuests" class="form-control" min="1" value="2">
                     </div>
                     <div class="col-md-12">
-                        <label for="typIzby" class="form-label">Typ izby</label>
-                        <select id="typIzby" class="form-select">
+                        <label for="roomType" class="form-label">Typ izby</label>
+                        <select id="roomType" class="form-select" required>
                             <option value="">-- Vyberte typ izby --</option>
                             <option value="Štandardná izba">Štandardná izba</option>
                             <option value="Luxusný apartmán">Luxusný apartmán</option>
@@ -109,13 +111,48 @@
     </footer>
 
     <script>
-        // Jednoduchá funkcia na predvyplnenie typu izby
-        function predvyplnIzbu(typ) {
-            document.getElementById('typIzby').value = typ;
-            window.scrollTo({ top: document.querySelector('form').offsetTop - 50, behavior: 'smooth' });
+        // Prefill room type and scroll to form
+        function prefillRoom(roomType) {
+            document.getElementById('roomType').value = roomType;
+            window.scrollTo({ 
+                top: document.querySelector('.reservation-form').offsetTop - 50, 
+                behavior: 'smooth' 
+            });
         }
+
+        // Search rooms dynamically
+        document.getElementById("roomSearch").addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll(".room-card").forEach(room => {
+                const roomName = room.querySelector("h3").textContent.toLowerCase();
+                room.style.display = roomName.includes(searchTerm) ? "block" : "none";
+            });
+        });
+
+        // Handle form submission
+        document.querySelector(".reservation-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("reserveName").value;
+            const email = document.getElementById("reserveEmail").value;
+            const date = document.getElementById("reserveDate").value;
+            const guests = document.getElementById("reserveGuests").value;
+            const roomType = document.getElementById("roomType").value;
+
+            const output = `
+                <h4>Vaša rezervácia:</h4>
+                <p><strong>Meno:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Dátum príchodu:</strong> ${date}</p>
+                <p><strong>Počet osôb:</strong> ${guests}</p>
+                <p><strong>Typ izby:</strong> ${roomType}</p>
+            `;
+
+            const resultContainer = document.getElementById("searchResults");
+            resultContainer.innerHTML = output;
+            resultContainer.style.display = "block";
+        });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
