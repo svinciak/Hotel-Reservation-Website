@@ -109,50 +109,6 @@
     <footer class="bg-dark text-white text-center p-3">
         © 2025 Hotel Aurora | <a href="contact.html" class="footer-link">Kontaktujte nás</a>
     </footer>
-
-    <script>
-        // Prefill room type and scroll to form
-        function prefillRoom(roomType) {
-            document.getElementById('roomType').value = roomType;
-            window.scrollTo({ 
-                top: document.querySelector('.reservation-form').offsetTop - 50, 
-                behavior: 'smooth' 
-            });
-        }
-
-        // Search rooms dynamically
-        document.getElementById("roomSearch").addEventListener("input", function () {
-            const searchTerm = this.value.toLowerCase();
-            document.querySelectorAll(".room-card").forEach(room => {
-                const roomName = room.querySelector("h3").textContent.toLowerCase();
-                room.style.display = roomName.includes(searchTerm) ? "block" : "none";
-            });
-        });
-
-        // Handle form submission
-        document.querySelector(".reservation-form").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById("reserveName").value;
-            const email = document.getElementById("reserveEmail").value;
-            const date = document.getElementById("reserveDate").value;
-            const guests = document.getElementById("reserveGuests").value;
-            const roomType = document.getElementById("roomType").value;
-
-            const output = `
-                <h4>Vaša rezervácia:</h4>
-                <p><strong>Meno:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Dátum príchodu:</strong> ${date}</p>
-                <p><strong>Počet osôb:</strong> ${guests}</p>
-                <p><strong>Typ izby:</strong> ${roomType}</p>
-            `;
-
-            const resultContainer = document.getElementById("searchResults");
-            resultContainer.innerHTML = output;
-            resultContainer.style.display = "block";
-        });
-    </script>
-
 </body>
+<script src="script.js"></script>
 </html>
