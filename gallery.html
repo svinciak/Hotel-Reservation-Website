@@ -19,7 +19,7 @@
                 <ul class="nav-list">
                     <li><a class="nav-link" href="index.html">Domov</a></li>
                     <li><a class="nav-link" href="rooms.html">Izby</a></li>
-                    <li><a class="nav-link" href="welness.html">Wellness</a></li>
+                    <li><a class="nav-link" href="wellness.html">Wellness</a></li>
                     <li><a class="nav-link active" href="gallery.html">Galéria</a></li>
                     <li><a class="nav-link" href="contact.html">Kontakt</a></li>
                 </ul>
@@ -31,57 +31,83 @@
         <h2 class="text-center mb-4">Galéria</h2>
 
         <div class="text-center mb-5">
-            <button class="btn btn-outline-primary filter-btn active" onclick="filterGallery('all')">Všetko</button>
-            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('rooms')">Izby</button>
-            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('wellness')">Wellness</button>
-            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('restaurant')">Reštaurácia</button>
-            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('nature')">Príroda</button>
+            <button class="btn btn-outline-primary filter-btn active" onclick="filterGallery('all', this)">Všetko</button>
+            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('rooms', this)">Izby</button>
+            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('wellness', this)">Wellness</button>
+            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('restaurant', this)">Reštaurácia</button>
+            <button class="btn btn-outline-primary filter-btn" onclick="filterGallery('nature', this)">Príroda</button>
         </div>
 
-        <!-- Obrázky -->
+        <!-- OBRAZKY -->
         <div class="gallery-container">
-            <!-- Kategória: Izby -->
-            <div class="gallery-item rooms">
-                <img src="imgs/standard.jpg" alt="Štandardná izba">
-            </div>
-            <div class="gallery-item rooms">
-                <img src="imgs/luxury.jpg" alt="Luxusný apartmán">
-            </div>
-            <div class="gallery-item rooms">
-                <img src="imgs/family.jpg" alt="Rodinná izba">
-            </div>
-
-            <!-- Kategória: Wellness -->
-            <div class="gallery-item wellness">
-                <img src="imgs/massage.jpg" alt="Spa služby">
-            </div>
-            <div class="gallery-item wellness">
-                <img src="imgs/pool.jpg" alt="Bazén">
-            </div>
-            <div class="gallery-item wellness">
-                <img src="imgs/sauna.jpg" alt="Sauna">
+            <!-- izby -->
+            <div class="gallery-section">
+                <h4 class="gallery-title" onclick="toggleSection(this)">Izby</h4>
+                <div class="gallery-grid rooms-grid">
+                    <div class="gallery-item rooms">
+                        <img src="imgs/standard.jpg" alt="Štandardná izba" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item rooms">
+                        <img src="imgs/luxury.jpg" alt="Luxusný apartmán" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item rooms">
+                        <img src="imgs/family.jpg" alt="Rodinná izba" onclick="openLightbox(this)">
+                    </div>
+                </div>
             </div>
 
-            <!-- Kategória: Reštaurácia -->
-            <div class="gallery-item restaurant">
-                <img src="imgs/restaurant.jpg" alt="Reštaurácia">
-            </div>
-            <div class="gallery-item restaurant">
-                <img src="imgs/food.jpg" alt="Jedlo">
-            </div>
-            <div class="gallery-item restaurant">
-                <img src="imgs/drinks.jpg" alt="Nápoje">
+            <!-- wellness -->
+            <div class="gallery-section">
+                <h4 class="gallery-title" onclick="toggleSection(this)">Wellness</h4>
+                <div class="gallery-grid wellness-grid">
+                    <div class="gallery-item wellness">
+                        <img src="imgs/massage.jpg" alt="Spa služby" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item wellness">
+                        <img src="imgs/pool.jpg" alt="Bazén" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item wellness">
+                        <img src="imgs/sauna.jpg" alt="Sauna" onclick="openLightbox(this)">
+                    </div>
+                </div>
             </div>
 
-            <!---- Kategória: Príroda --->
-            <div class="gallery-item nature">
-                <img src="imgs/tatras0.jpg" alt="Hory0">
+            <!-- restauracia -->
+            <div class="gallery-section">
+                <h4 class="gallery-title" onclick="toggleSection(this)">Reštaurácia</h4>
+                <div class="gallery-grid restaurant-grid">
+                    <div class="gallery-item restaurant">
+                        <img src="imgs/restaurant.jpg" alt="Reštaurácia" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item restaurant">
+                        <img src="imgs/food.jpg" alt="Jedlo" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item restaurant">
+                        <img src="imgs/drinks.jpg" alt="Nápoje" onclick="openLightbox(this)">
+                    </div>
+                </div>
             </div>
-            <div class="gallery-item nature">
-                <img src="imgs/tatras1.jpg" alt="Hory0">
-            </div>
-            <div class="gallery-item nature">
-                <img src="imgs/tatras2.jpg" alt="Hory0">
+
+            <!-- priroda -->
+            <div class="gallery-section">
+                <h4 class="gallery-title" onclick="toggleSection(this)">Príroda</h4>
+                <div class="gallery-grid nature-grid">
+                    <div class="gallery-item nature">
+                        <img src="imgs/tatras0.jpg" alt="Hory" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item nature">
+                        <img src="imgs/tatras1.jpg" alt="Jazero" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item nature">
+                        <img src="imgs/tatras2.jpg" alt="Les" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item nature">
+                        <img src="imgs/tatras3.jpg" alt="Les" onclick="openLightbox(this)">
+                    </div>
+                    <div class="gallery-item nature">
+                        <img src="imgs/tatras4.jpg" alt="Les" onclick="openLightbox(this)">
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -89,6 +115,14 @@
     <footer class="bg-dark text-white text-center p-3">
         © 2025 Hotel Aurora | <a href="contact.html" class="footer-link">Kontaktujte nás</a>
     </footer>
+
+    <!-- lightbox na obrazky -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-image" src="" alt="">
+        <span class="lightbox-prev" onclick="changeLightboxImage(-1)">❮</span>
+        <span class="lightbox-next" onclick="changeLightboxImage(1)">❯</span>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
