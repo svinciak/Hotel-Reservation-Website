@@ -29,14 +29,19 @@ document.querySelector(".reservation-form")?.addEventListener("submit", function
     const guests = document.getElementById("reserveGuests").value;
     const roomType = document.getElementById("roomType").value;
 
-    document.getElementById("searchResults").innerHTML = `
-        <h4>Vaša rezervácia:</h4>
-        <p><strong>Meno:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Dátum príchodu:</strong> ${date}</p>
-        <p><strong>Počet osôb:</strong> ${guests}</p>
-        <p><strong>Typ izby:</strong> ${roomType}</p>
-    `;
+    // sweet alert 2 oznam
+    Swal.fire({
+        title: 'Rezervácia prijatá',
+        html: `
+            <p><strong>Typ izby:</strong> ${roomType || '-'} </p>
+            <p><strong>Meno:</strong> ${name || '-'} </p>
+            <p><strong>Email:</strong> ${email || '-'} </p>
+            <p><strong>Dátum príchodu:</strong> ${date || '-'} </p>
+            <p><strong>Počet osôb:</strong> ${guests || '-'} </p>
+        `,
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
 });
 
 // contact.html - vypis formulara
@@ -46,8 +51,18 @@ document.querySelector(".contact-form")?.addEventListener("submit", function (e)
     const email = document.getElementById("contactEmail").value;
     const message = document.getElementById("contactMessage").value;
 
-    alert(`Meno: ${name}\nEmail: ${email}\nSpráva: ${message}`);
-    this.reset();
+    // sweet alert 2 oznam
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        draggable: true,
+        title: "Správa odoslaná",
+        html:
+            `<p><strong>Meno:</strong> ${name || '-'} </p>` +
+            `<p><strong>Email:</strong> ${email || '-'} </p>` +
+            `<p><strong>Správa:</strong> ${message || '-'} </p>`,
+        showConfirmButton: true,
+    });
 });
 
 // gallery.html - filtrovanie obrázkov
