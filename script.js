@@ -1,101 +1,163 @@
-// rooms.html - predvyplnenie rezervacie izby
+// ROOMS.HTML - Predvyplnenie rezervacie izby
 function prefillRoom(roomType) {
     document.getElementById('roomType').value = roomType;
-    if (roomType === 'Štandardná izba') {
+    
+   if (roomType === 'Štandardná izba' || roomType === 'Standardna izba') {
         document.getElementById('reserveGuests').value = 1;
-    } else if (roomType === 'Luxusný apartmán') {
+        console.log("Nastavene hosty: 1");
+    } else if (roomType === 'Luxusný apartmán' || roomType === 'Luxusny apartman') {
         document.getElementById('reserveGuests').value = 2;
-    } else if (roomType === 'Rodinná izba') {
+        console.log("Nastavene hosty: 2");
+    } else if (roomType === 'Rodinná izba' || roomType === 'Rodinna izba') {
         document.getElementById('reserveGuests').value = 4;
+        console.log("Nastavene hosty: 4");
+    } else {
+        console.log("POZOR: Neznamy typ izby!");
     }
-    document.querySelector('.reservation-form').scrollIntoView({ behavior: 'smooth' }); // skrolovanie
+    
+    // Skrolovanie na formular
+    var form = document.querySelector('.reservation-form');
+    if (form) {
+        form.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
-// rooms.html - dynamicke vyhladavanie izieb
-document.getElementById("roomSearch")?.addEventListener("input", function () {
-    const searchTerm = this.value.toLowerCase();
-    document.querySelectorAll(".room-card").forEach(room => {
-        const roomName = room.querySelector("h3").textContent.toLowerCase();
-        room.style.display = roomName.includes(searchTerm) ? "block" : "none";
-    });
-});
+// ROOMS.HTML - Dynamicke vyhladavanie izieb
+var roomSearchInput = document.getElementById("roomSearch");
 
-// rooms.html - vypis rezervacie po odoslani formulara
-document.querySelector(".reservation-form")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("reserveName").value;
-    const email = document.getElementById("reserveEmail").value;
-    const date = document.getElementById("reserveDate").value;
-    const guests = document.getElementById("reserveGuests").value;
-    const roomType = document.getElementById("roomType").value;
+if (roomSearchInput) {
+    roomSearchInput.oninput = function() {
+        var searchTerm = this.value.toLowerCase();
+        var roomCards = document.querySelectorAll(".room-card");
 
-    // sweet alert 2 oznam
-    Swal.fire({
-        title: 'Rezervácia prijatá',
-        html: `
-            <p><strong>Typ izby:</strong> ${roomType || '-'} </p>
-            <p><strong>Meno:</strong> ${name || '-'} </p>
-            <p><strong>Email:</strong> ${email || '-'} </p>
-            <p><strong>Dátum príchodu:</strong> ${date || '-'} </p>
-            <p><strong>Počet osôb:</strong> ${guests || '-'} </p>
-        `,
-        icon: 'success',
-        confirmButtonText: 'OK'
-    });
-});
+        for (var i = 0; i < roomCards.length; i++) {
+            var room = roomCards[i];
+            var roomName = room.querySelector("h3").textContent.toLowerCase();
+            
+            if (roomName.indexOf(searchTerm) !== -1) {
+                room.style.display = "block";
+            } else {
+                room.style.display = "none";
+            }
+        }
+    };
+}
 
-// contact.html - vypis formulara
-document.querySelector(".contact-form")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("contactName").value;
-    const email = document.getElementById("contactEmail").value;
-    const message = document.getElementById("contactMessage").value;
+// ROOMS.HTML - Vypis rezervacie po odoslani
+var reservationForm = document.querySelector(".reservation-form");
 
-    // sweet alert 2 oznam
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        draggable: true,
-        title: "Správa odoslaná",
-        html:
-            `<p><strong>Meno:</strong> ${name || '-'} </p>` +
-            `<p><strong>Email:</strong> ${email || '-'} </p>` +
-            `<p><strong>Správa:</strong> ${message || '-'} </p>`,
-        showConfirmButton: true,
-    });
-});
+if (reservationForm) {
+    reservationForm.onsubmit = function(e) {
+        e.preventDefault();
+        
+        var name = document.getElementById("reserveName").value;
+        var email = document.getElementById("reserveEmail").value;
+        var date = document.getElementById("reserveDate").value;
+        var guests = document.getElementById("reserveGuests").value;
+        var roomType = document.getElementById("roomType").value;
 
-// gallery.html - filtrovanie obrázkov
+        if (!name) name = '-';
+        if (!email) email = '-';
+        if (!date) date = '-';
+        if (!guests) guests = '-';
+        if (!roomType) roomType = '-';
+        
+        // Sweet Alert 2 oznam
+        Swal.fire({
+            title: 'Rezervacia prijata',
+            html: 
+                '<p><strong>Typ izby:</strong> ' + roomType + '</p>' +
+                '<p><strong>Meno:</strong> ' + name + '</p>' +
+                '<p><strong>Email:</strong> ' + email + '</p>' +
+                '<p><strong>Datum prichodu:</strong> ' + date + '</p>' +
+                '<p><strong>Pocet osob:</strong> ' + guests + '</p>',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    };
+}
+
+// CONTACT.HTML - Vypis kontaktneho formulara
+var contactForm = document.querySelector(".contact-form");
+
+if (contactForm) {
+    contactForm.onsubmit = function(e) {
+        e.preventDefault();
+        var name = document.getElementById("contactName").value;
+        var email = document.getElementById("contactEmail").value;
+        var message = document.getElementById("contactMessage").value;
+        
+        // Ak nemame hodnotu, dame -
+        if (!name) name = '-';
+        if (!email) email = '-';
+        if (!message) message = '-';
+        
+        // Sweet Alert 2 oznam
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            draggable: true,
+            title: "Sprava odoslana",
+            html:
+                '<p><strong>Meno:</strong> ' + name + '</p>' +
+                '<p><strong>Email:</strong> ' + email + '</p>' +
+                '<p><strong>Sprava:</strong> ' + message + '</p>',
+            showConfirmButton: true,
+        });
+    };
+}
+
+// GALLERY.HTML - Filtrovanie obrazkov
 function filterGallery(category, button) {
-    const sections = document.querySelectorAll(".gallery-section");
-    const buttons = document.querySelectorAll(".filter-btn");
-
-    sections.forEach(section => {
-        const hasCategory = section.querySelector(`.gallery-item.${category}`);
+    var sections = document.querySelectorAll(".gallery-section");
+    var buttons = document.querySelectorAll(".filter-btn");
+    
+    for (var i = 0; i < sections.length; i++) {
+        var section = sections[i];
+        var hasCategory = section.querySelector(".gallery-item." + category);
+        
         if (category === "all" || hasCategory) {
             section.style.display = "block";
         } else {
             section.style.display = "none";
         }
-    });
-
-    buttons.forEach(btn => btn.classList.remove("active"));
+    }
+    for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove("active");
+    }
     button.classList.add("active");
 }
 
-// gallery.html - otváranie/zaváranie sekcií
+// GALLERY.HTML - Otvaranie/zavaranie sekcii
 function toggleSection(titleElement) {
-    const grid = titleElement.nextElementSibling;
-    grid.classList.toggle("collapsed");
+    var grid = titleElement.nextElementSibling;
+    
+    if (grid.classList.contains("collapsed")) {
+        grid.classList.remove("collapsed");
+    } else {
+        grid.classList.add("collapsed");
+    }
 }
 
-// gallery.html - lightbox
-let currentImageIndex = 0;
-let galleryImages = [];
+// GALLERY.HTML - Lightbox (galeria obrazkov)
+var currentImageIndex = 0;
+var galleryImages = [];
 
 function openLightbox(img) {
-    galleryImages = Array.from(document.querySelectorAll(".gallery-item img"));
-    currentImageIndex = galleryImages.indexOf(img);
+    var allImages = document.querySelectorAll(".gallery-item img");
+    galleryImages = [];
+    
+    for (var i = 0; i < allImages.length; i++) {
+        galleryImages.push(allImages[i]);
+    }
+    currentImageIndex = -1;
+    for (var j = 0; j < galleryImages.length; j++) {
+        if (galleryImages[j] === img) {
+            currentImageIndex = j;
+            break;
+        }
+    }
+
     document.getElementById("lightbox").classList.add("show");
     document.querySelector(".lightbox-image").src = img.src;
     document.querySelector(".lightbox-image").alt = img.alt;
@@ -106,26 +168,38 @@ function closeLightbox() {
 }
 
 function changeLightboxImage(n) {
-    currentImageIndex += n;
+    currentImageIndex = currentImageIndex + n;
+
     if (currentImageIndex >= galleryImages.length) {
         currentImageIndex = 0;
     } else if (currentImageIndex < 0) {
         currentImageIndex = galleryImages.length - 1;
     }
+
     document.querySelector(".lightbox-image").src = galleryImages[currentImageIndex].src;
     document.querySelector(".lightbox-image").alt = galleryImages[currentImageIndex].alt;
 }
 
-document.addEventListener("keydown", function (e) {
-    if (document.getElementById("lightbox").classList.contains("show")) {
-        if (e.key === "ArrowLeft") changeLightboxImage(-1);
-        if (e.key === "ArrowRight") changeLightboxImage(1);
-        if (e.key === "Escape") closeLightbox();
+document.onkeydown = function(e) {
+    var lightbox = document.getElementById("lightbox");
+    if (lightbox && lightbox.classList.contains("show")) {
+        if (e.key === "ArrowLeft") {
+            changeLightboxImage(-1);
+        }
+        if (e.key === "ArrowRight") {
+            changeLightboxImage(1);
+        }
+        if (e.key === "Escape") {
+            closeLightbox();
+        }
     }
-});
+};
 
-document.getElementById("lightbox")?.addEventListener("click", function (e) {
-    if (e.target === this) {
-        closeLightbox();
-    }
-});
+var lightboxElement = document.getElementById("lightbox");
+if (lightboxElement) {
+    lightboxElement.onclick = function(e) {
+        if (e.target === this) {
+            closeLightbox();
+        }
+    };
+}
